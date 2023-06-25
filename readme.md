@@ -13,6 +13,7 @@
  ### 或透過slot001.proto產生 leafServer && cocos project(範本為3.7.2)
  goleaf rpc protoc slot001.proto --zrpc_out=. --home template --cocos=CocosProjectName
  ### cocos專案中的Makefile可用來將proto編譯成typescript檔，第一步：make env、第二步：make grpc，查看scripts/models
+ ### scripts/GameLaunch.ts 作為程式進入點，請在場景新增空節點掛載。
  
  ### 產生Controller/View的模板
  goleaf cocos --controller LobbyUI
