@@ -1,0 +1,6 @@
+AssetsPackage/Animations
+AssetsPackage/Audio
+AssetsPackage/GUI
+AssetsPackage/GUI/UIPrefab
+AssetsPackage/Images
+scenes
