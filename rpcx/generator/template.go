@@ -30,39 +30,42 @@ const (
 	gameInternalLogicTemplateFile     = "game_internal_logic.tpl"
 	gameInternalLogicFuncTemplateFile = "game_internal_logic_func.tpl"
 	//cc
-	ccMakefileTemplateFile             = "ccMakefile.tpl"
-	ccGameAppTemplateFile              = "ccGameApp.tpl"
-	ccBaseControllerTemplateFile       = "ccBaseController.tpl"
-	ccLoginUIControllerTemplateFile    = "ccLoginUIController.tpl"
-	ccLibTemplateFile                  = "lib.md"
-	ccLibHowlerTemplateFile            = "howler.js"
-	ccLibProtobufTemplateFile          = "protobuf.js"
-	ccLibProtobufMapTemplateFile       = "protobuf.js.map"
-	ccLibProtobufIndexTemplateFile     = "protobuf.d.ts"
-	ccCmdTypeTemplateFile              = "ccCmdType.tpl"
-	ccGameModelTemplateFile            = "ccGameModel.tpl"
-	ccAudioConstantTemplateFile        = "ccAudioConstant.tpl"
-	ccAudioManagerTemplateFile         = "ccAudioManager.tpl"
-	ccBGMAudioManagerTemplateFile      = "ccBGMAudioManager.tpl"
-	ccGeneralAudioManagerTemplateFile  = "ccGeneralAudioManager.tpl"
-	ccMainGameAudioManagerTemplateFile = "ccMainGameAudioManager.tpl"
-	ccNetEventTemplateFile             = "ccNetEvent.tpl"
-	ccNetEventDispatcherTemplateFile   = "ccNetEventDispatcher.tpl"
-	ccNetManagerTemplateFile           = "ccNetManager.tpl"
-	ccProtoManagerTemplateFile         = "ccProtoManager.tpl"
-	ccAuthProxyTemplateFile            = "ccAuthProxy.tpl"
-	ccEventManagerTemplateFile         = "ccEventManager.tpl"
-	ccResManagerTemplateFile           = "ccResManager.tpl"
-	ccTimerManagerTemplateFile         = "ccTimerManager.tpl"
-	ccUIManagerTemplateFile            = "ccUIManager.tpl"
-	ccBaseUIViewTemplateFile           = "ccBaseUIView.tpl"
-	ccLoginUIViewTemplateFile          = "ccLoginUIView.tpl"
-	ccUIEventTemplateFile              = "ccUIEvent.tpl"
-	ccGameConfigTemplateFile           = "ccGameConfig.tpl"
-	ccGameLaunchTemplateFile           = "ccGameLaunch.tpl"
-	ccToolPackageTemplateFile          = "ccToolPackage.tpl"
-	ccToolWrapPBJSTemplateFile         = "ccToolWrapPBjs.tpl"
-	ccToolWrapPBTSTemplateFile         = "ccToolWrapPBts.tpl"
+	ccMakefileTemplateFile               = "ccMakefile.tpl"
+	ccGameAppTemplateFile                = "ccGameApp.tpl"
+	ccBaseControllerTemplateFile         = "ccBaseController.tpl"
+	ccLoginUIControllerTemplateFile      = "ccLoginUIController.tpl"
+	ccLibTemplateFile                    = "lib.md"
+	ccLibHowlerTemplateFile              = "howler.js"
+	ccLibProtobufTemplateFile            = "protobuf.js"
+	ccLibProtobufMapTemplateFile         = "protobuf.js.map"
+	ccLibProtobufIndexTemplateFile       = "protobuf.d.ts"
+	ccLibBezierCurveTemplateFile         = "BezierCurve.ts"
+	ccLibBezierCurveAnimTemplateFile     = "BezierCurveAnimation.ts"
+	ccLibBezierCurveMoveBaseTemplateFile = "BezierCurveMoveBase.ts"
+	ccCmdTypeTemplateFile                = "ccCmdType.tpl"
+	ccGameModelTemplateFile              = "ccGameModel.tpl"
+	ccAudioConstantTemplateFile          = "ccAudioConstant.tpl"
+	ccAudioManagerTemplateFile           = "ccAudioManager.tpl"
+	ccBGMAudioManagerTemplateFile        = "ccBGMAudioManager.tpl"
+	ccGeneralAudioManagerTemplateFile    = "ccGeneralAudioManager.tpl"
+	ccMainGameAudioManagerTemplateFile   = "ccMainGameAudioManager.tpl"
+	ccNetEventTemplateFile               = "ccNetEvent.tpl"
+	ccNetEventDispatcherTemplateFile     = "ccNetEventDispatcher.tpl"
+	ccNetManagerTemplateFile             = "ccNetManager.tpl"
+	ccProtoManagerTemplateFile           = "ccProtoManager.tpl"
+	ccAuthProxyTemplateFile              = "ccAuthProxy.tpl"
+	ccEventManagerTemplateFile           = "ccEventManager.tpl"
+	ccResManagerTemplateFile             = "ccResManager.tpl"
+	ccTimerManagerTemplateFile           = "ccTimerManager.tpl"
+	ccUIManagerTemplateFile              = "ccUIManager.tpl"
+	ccBaseUIViewTemplateFile             = "ccBaseUIView.tpl"
+	ccLoginUIViewTemplateFile            = "ccLoginUIView.tpl"
+	ccUIEventTemplateFile                = "ccUIEvent.tpl"
+	ccGameConfigTemplateFile             = "ccGameConfig.tpl"
+	ccGameLaunchTemplateFile             = "ccGameLaunch.tpl"
+	ccToolPackageTemplateFile            = "ccToolPackage.tpl"
+	ccToolWrapPBJSTemplateFile           = "ccToolWrapPBjs.tpl"
+	ccToolWrapPBTSTemplateFile           = "ccToolWrapPBts.tpl"
 	// cc resource
 	ccResourceConfigTemplateFile = "ccApp.tpl"
 	// cc template
@@ -96,15 +99,19 @@ var templates = map[string]string{
 	confServerTemplateFile:           confServerTemplate,
 	gameInternalLogicTemplateFile:    gameInternalLogicTemplate,
 	// cc
-	ccMakefileTemplateFile:             ccMakefileTemplate,
-	ccGameAppTemplateFile:              ccGameAppTemplate,
-	ccBaseControllerTemplateFile:       ccBaseControllerTemplate,
-	ccLoginUIControllerTemplateFile:    ccLoginUIControllerTemplate,
-	ccLibTemplateFile:                  ccLibTemplate,
-	ccLibHowlerTemplateFile:            ccLibHowlerTemplate,
-	ccLibProtobufTemplateFile:          ccLibProtobufTemplate,
-	ccLibProtobufMapTemplateFile:       ccLibProtobufMapTemplate,
-	ccLibProtobufIndexTemplateFile:     ccLibProtobufIndexTemplate,
+	ccMakefileTemplateFile:               ccMakefileTemplate,
+	ccGameAppTemplateFile:                ccGameAppTemplate,
+	ccBaseControllerTemplateFile:         ccBaseControllerTemplate,
+	ccLoginUIControllerTemplateFile:      ccLoginUIControllerTemplate,
+	ccLibTemplateFile:                    ccLibTemplate,
+	ccLibHowlerTemplateFile:              ccLibHowlerTemplate,
+	ccLibProtobufTemplateFile:            ccLibProtobufTemplate,
+	ccLibProtobufMapTemplateFile:         ccLibProtobufMapTemplate,
+	ccLibProtobufIndexTemplateFile:       ccLibProtobufIndexTemplate,
+	ccLibBezierCurveTemplateFile:         ccLibBezierCurveTemplate,
+	ccLibBezierCurveAnimTemplateFile:     ccLibBezierCurveAnimTemplate,
+	ccLibBezierCurveMoveBaseTemplateFile: ccLibBezierCurveMoveBaseTemplate,
+
 	ccCmdTypeTemplateFile:              ccCmdTypeTemplate,
 	ccGameModelTemplateFile:            ccGameModelTemplate,
 	ccAudioConstantTemplateFile:        ccAudioConstantTemplate,

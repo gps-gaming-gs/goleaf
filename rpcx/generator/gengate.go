@@ -3,6 +3,7 @@ package generator
 import (
 	_ "embed"
 	"fmt"
+	"os"
 	"path/filepath"
 	"sort"
 	"strings"
@@ -120,7 +121,7 @@ func (g *Generator) gateRouter(ctx DirContext, proto parser.Proto, cfg *conf.Con
 
 	fileName := filepath.Join(dir.Filename, configFilename+".go")
 	if pathx.FileExists(fileName) {
-		return nil
+		os.Remove(fileName)
 	}
 
 	text, err := pathx.LoadTemplate(category, gateRouterTemplateFile, gateRouterTemplate)

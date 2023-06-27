@@ -54,6 +54,15 @@ var ccLibProtobufMapTemplate string
 //go:embed cocos/assets/scripts/lib/protobuf/protobuf.d.ts
 var ccLibProtobufIndexTemplate string
 
+//go:embed cocos/assets/scripts/lib/bezier_anim/BezierCurve.ts
+var ccLibBezierCurveTemplate string
+
+//go:embed cocos/assets/scripts/lib/bezier_anim/BezierCurveAnimation.ts
+var ccLibBezierCurveAnimTemplate string
+
+//go:embed cocos/assets/scripts/lib/bezier_anim/BezierCurveMoveBase.ts
+var ccLibBezierCurveMoveBaseTemplate string
+
 //go:embed cocos/assets/scripts/models/ccCmdType.tpl
 var ccCmdTypeTemplate string
 
@@ -411,6 +420,80 @@ func (g *Generator) ccLib(ctx CocosDirContext, proto parser.Proto, cfg *conf.Con
 		return nil
 	}
 
+	BezierAnim := func() error {
+		dir := ctx.GetCCScriptLibBezierAnim()
+		// BezierCurve.ts
+		BezierCurve := func() error {
+			fileName := filepath.Join(dir.Filename, "BezierCurve.ts")
+			if pathx.FileExists(fileName) {
+				return nil
+			}
+			text, err := pathx.LoadTemplate(category, ccLibBezierCurveTemplateFile, ccLibBezierCurveTemplate)
+			if err != nil {
+				return err
+			}
+			if err = util.With("ccLibBezierCurve").GoFmt(false).Parse(text).SaveTo(map[string]interface{}{
+				//
+			}, fileName, true); err != nil {
+				return err
+			}
+			return nil
+		}
+
+		// BezierCurveAnimation.ts
+		BezierCurveAnimation := func() error {
+			fileName := filepath.Join(dir.Filename, "BezierCurveAnimation.ts")
+			if pathx.FileExists(fileName) {
+				return nil
+			}
+			text, err := pathx.LoadTemplate(category, ccLibBezierCurveAnimTemplateFile, ccLibBezierCurveAnimTemplate)
+			if err != nil {
+				return err
+			}
+			if err = util.With("ccLibBezierCurveAnim").GoFmt(false).Parse(text).SaveTo(map[string]interface{}{
+				//
+			}, fileName, true); err != nil {
+				return err
+			}
+			return nil
+		}
+
+		// BezierCurveMoveBase.ts
+		BezierCurveMoveBase := func() error {
+			fileName := filepath.Join(dir.Filename, "BezierCurveMoveBase.ts")
+			if pathx.FileExists(fileName) {
+				return nil
+			}
+			text, err := pathx.LoadTemplate(category, ccLibBezierCurveMoveBaseTemplateFile, ccLibBezierCurveMoveBaseTemplate)
+			if err != nil {
+				return err
+			}
+			if err = util.With("ccLibBezierCurveMoveBase").GoFmt(false).Parse(text).SaveTo(map[string]interface{}{
+				//
+			}, fileName, true); err != nil {
+				return err
+			}
+			return nil
+		}
+
+		err := BezierCurve()
+		if err != nil {
+			return err
+		}
+
+		err = BezierCurveAnimation()
+		if err != nil {
+			return err
+		}
+
+		err = BezierCurveMoveBase()
+		if err != nil {
+			return err
+		}
+
+		return nil
+	}
+
 	err := Lib()
 	if err != nil {
 		return err
@@ -422,6 +505,11 @@ func (g *Generator) ccLib(ctx CocosDirContext, proto parser.Proto, cfg *conf.Con
 	}
 
 	err = Protobuf()
+	if err != nil {
+		return err
+	}
+
+	err = BezierAnim()
 	if err != nil {
 		return err
 	}

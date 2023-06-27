@@ -26,5 +26,7 @@ message ChatResp {
 }
 
 service {{.serviceName}} {
-//
+  // service
+  rpc LoginService (LoginReq) returns (LoginResp);
+  rpc ChatService (ChatReq) returns (ChatResp);
 }

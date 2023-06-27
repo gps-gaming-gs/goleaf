@@ -12,24 +12,25 @@ import (
 
 const (
 	// for cocos folder
-	cocos                = "cocos"
-	ccAsset              = "asset"
-	ccResource           = "resource"
-	ccResourceConfig     = "config"
-	ccScript             = "script"
-	ccScriptLib          = "lib"
-	ccScriptLibProtobuf  = "protobuf"
-	ccScriptBootstrap    = "bootstrap"
-	ccScriptController   = "controller"
-	ccScriptModel        = "model"
-	ccScriptService      = "service"
-	ccScriptServiceAudio = "audio"
-	ccScriptServiceNet   = "net"
-	ccScriptServiceProxy = "proxy"
-	ccScriptUtil         = "util"
-	ccScriptView         = "view"
-	ccTool               = "tool"
-	ccToolProtoCompile   = "proto-compile"
+	cocos                 = "cocos"
+	ccAsset               = "asset"
+	ccResource            = "resource"
+	ccResourceConfig      = "config"
+	ccScript              = "script"
+	ccScriptLib           = "lib"
+	ccScriptLibProtobuf   = "protobuf"
+	ccScriptLibBezierAnim = "bezier-anim"
+	ccScriptBootstrap     = "bootstrap"
+	ccScriptController    = "controller"
+	ccScriptModel         = "model"
+	ccScriptService       = "service"
+	ccScriptServiceAudio  = "audio"
+	ccScriptServiceNet    = "net"
+	ccScriptServiceProxy  = "proxy"
+	ccScriptUtil          = "util"
+	ccScriptView          = "view"
+	ccTool                = "tool"
+	ccToolProtoCompile    = "proto-compile"
 )
 
 type (
@@ -42,6 +43,7 @@ type (
 		GetCCScript() Dir
 		GetCCScriptLib() Dir
 		GetCCScriptLibProtobuf() Dir
+		GetCCScriptLibBezierAnim() Dir
 		GetCCScriptBootstrap() Dir
 		GetCCScriptController() Dir
 		GetCCScriptModel() Dir
@@ -75,6 +77,7 @@ func mkdircocos(ctx *ctx.ProjectContext, c *ZRpcContext) (CocosDirContext,
 	ccScriptDir := filepath.Join(ccAssetDir, "scripts")
 	ccScriptLibDir := filepath.Join(ccScriptDir, "lib")
 	ccScriptLibProtobufDir := filepath.Join(ccScriptLibDir, "protobuf")
+	ccScriptLibBezierAnimDir := filepath.Join(ccScriptLibDir, "bezier_anim")
 	ccScriptBootstrapDir := filepath.Join(ccScriptDir, "bootstrap")
 	ccScriptControllerDir := filepath.Join(ccScriptDir, "controllers")
 	ccScriptModelDir := filepath.Join(ccScriptDir, "models")
@@ -162,6 +165,15 @@ func mkdircocos(ctx *ctx.ProjectContext, c *ZRpcContext) (CocosDirContext,
 		Base:     filepath.Base(ccScriptLibProtobufDir),
 		GetChildPackage: func(childPath string) (string, error) {
 			return getChildPackage(ccScriptLibProtobufDir, childPath)
+		},
+	}
+
+	inner[ccScriptLibBezierAnim] = Dir{
+		Filename: ccScriptLibBezierAnimDir,
+		Package:  filepath.ToSlash(filepath.Join(ctx.Path, strings.TrimPrefix(ccScriptLibBezierAnimDir, ctx.Dir))),
+		Base:     filepath.Base(ccScriptLibBezierAnimDir),
+		GetChildPackage: func(childPath string) (string, error) {
+			return getChildPackage(ccScriptLibBezierAnimDir, childPath)
 		},
 	}
 
@@ -305,6 +317,10 @@ func (d *cocosDirContext) GetCCScriptLib() Dir {
 
 func (d *cocosDirContext) GetCCScriptLibProtobuf() Dir {
 	return d.inner[ccScriptLibProtobuf]
+}
+
+func (d *cocosDirContext) GetCCScriptLibBezierAnim() Dir {
+	return d.inner[ccScriptLibBezierAnim]
 }
 
 func (d *cocosDirContext) GetCCScriptBootstrap() Dir {
